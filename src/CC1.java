@@ -18,10 +18,57 @@ public class CC1 {
     }
 
     // 1.2
+    public boolean checkPerm(String s1, String s2) {
+        if (s1.length() != s2.length()) {
+            return false;
+        }
+
+        int[] rec = new int[128];
+        for (int i = 0; i < s1.length(); i++) {
+            rec[s1.charAt(i)]++;
+        }
+
+        for (int i = 0; i < s2.length(); i++) {
+            char cur = s2.charAt(i);
+            rec[cur]--;
+            if (rec[cur] < 0) return false;
+        }
+        return true;
+    }
 
     // 1.3
 
+    public String unify(String s) {
+        StringBuilder sb = new StringBuilder();
+        s = s.trim();
+        boolean added = false;
+        for (char c : s.toCharArray()) {
+            if (!added && c != ' ') {
+                sb.append("%20");
+                added = true;
+            } else {
+                sb.append(c);
+                added = false;
+            }
+        }
+        return sb.toString();
+    }
+
     // 1.4
+
+    public boolean ispal(String s) {
+        if (s.length() <= 1) {
+            return true;
+        }
+        s = s.toUpperCase();
+        for (int i = 0, j = s.length() - 1; i < j; i++, j++) {
+            while (i < j && !Character.isDigit(s.charAt(i))) i++;
+            while (i < j && !Character.isDigit(s.charAt(j))) j--;
+            if (s.charAt(i) != s.charAt(j)) return false;
+        }
+        return true;
+
+    }
 
     // 1.5
 
