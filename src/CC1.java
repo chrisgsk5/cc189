@@ -72,6 +72,37 @@ public class CC1 {
 
     // 1.5
 
+    public boolean oneAway(String s1, String s2) {
+        int sd = s1.length() - s2.length();
+        if (sd > 1) {
+            return false;
+        }
+
+        String sf = s1.length() > s2.length() ? s2 : s1;
+        String ss = s1.length() > s2.length() ? s1 : s2;
+        int pos1 = 0;
+        int pos2 = 0;
+        boolean found = false;
+
+        while (pos1 < sf.length() && pos2 < ss.length() ) {
+            if (sf.charAt(pos1) != ss.charAt(pos2)) {
+                if (found) return false;
+                found = true;
+
+                if (sf.length() == ss.length()) {
+                    pos1++;
+                }
+            } else {
+                pos1++;
+            }
+            pos2++;
+        }
+
+        return true;
+    }
+
+
+
     // 1.6
 
     // 1.7
