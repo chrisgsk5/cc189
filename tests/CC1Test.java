@@ -5,4 +5,5 @@ public class CC1Test {
         assertTrue(isUnique("a"));
     }
 
+
 }

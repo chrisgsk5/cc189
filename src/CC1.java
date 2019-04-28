@@ -1,4 +1,8 @@
 
+import
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class CC1 {
 
@@ -105,13 +109,71 @@ public class CC1 {
 
     // 1.6
 
+    public String stringCompression(String s) {
+        StringBuilder sb = new StringBuilder();
+        int count = 0;
+        for (int i = 0; i < s.length(); i++) {
+            count++;
+            if (i + 1 >= s.length() || s.charAt(i) != s.charAt(i + 1)) {
+                sb.append(s.charAt(i));
+                sb.append(count);
+                count = 0;
+            }
+        }
+        return s.length() >= sb.length() ? sb.toString() : s;
+
+    }
+
     // 1.7
+
+    public void rotateMatrix(int[][] m) {
+
+    }
 
     // 1.8
 
+    public void zerorizeMatrix(int[][] m) {
+//        for (int i = 0; i < m.length; i++) {
+//            for (int j = 0; i < m[0].length; i++) {
+//
+//            }
+//        }
+        // Use the first row and column as recording array
+    }
+
     // 1.9
 
-    public static void main(String[] args) {
-
+    public boolean isRotation(String s1, String s2) {
+        if (s1.length() == s2.length()) {
+            String compose = s1 + s2;
+            return isSubstring(compose, s2);
+        }
+        return false;
     }
+
+    private boolean isSubstring(String s1, String s2) {
+            int M = s1.length();
+            int N = s2.length();
+
+            /* A loop to slide pat[] one by one */
+            for (int i = 0; i <= N - M; i++) {
+                int j;
+
+            /* For current index i, check for
+            pattern match */
+                for (j = 0; j < M; j++)
+                    if (s2.charAt(i + j) != s1.charAt(j))
+                        break;
+
+                if (j == M)
+                    return true;
+            }
+
+            return false;
+        }
+    }
+
+//    public static void main(String[] args) {
+//
+//    }
 }
